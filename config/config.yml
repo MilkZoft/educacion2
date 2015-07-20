@@ -1,0 +1,30 @@
+---
+production: &default
+  serverPort: 3000
+  baseUrl: http://www.educacion.io
+  views:
+    minify: true
+    stylusPrecompile: true
+    engine: handlebars
+    extension: .hbs
+    layout: main
+  controllers:
+    default: home
+  languages:
+    default: en
+    list: [es, en]
+
+stage: &stage
+  <<: *default
+  baseUrl: http://stage.educacion.io
+
+latest: &latest
+  <<: *stage
+  baseUrl: http://latest.educacion.io
+
+development:
+  <<: *latest
+  baseUrl: http://local.educacion.io
+  views:
+    minify: false
+    stylusPrecompile: false
